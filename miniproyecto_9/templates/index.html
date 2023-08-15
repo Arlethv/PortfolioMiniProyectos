@@ -39,7 +39,7 @@
             <img class="card-img-top" src="{{ info_peliculas.0.imagen }}" alt="Card image">
             <div class="card-body">
 
-              <form method="post" action="{% url 'web_scrape' %}" >
+              <form method="post" action="{% url 'ratings_pelculas' %}" >
                 {% csrf_token %}
                 <h5 class="card-title">{{ titulo }}</h5>
                 {% if info_peliculas.0.puntaje|floatformat:"2" >= "70.00" or info_peliculas.0.puntaje|floatformat:"2" == "100.00" %}
