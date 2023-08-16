@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scrape</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href='{% static "css/style.css" %}'>
+</head>
+<body>
+<header>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        Billboard - Web Scrape
+      </a>
+    </div>
+  </nav>
+</header>
+    <h1>{{ titulo }}</h1>
+    <div class="container mt-4">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" class="table-dark text-center " style="background-color: #4361ee; font-size: 18px;">Posición</th>
+            <th scope="col" class="table-dark text-center" style="background-color: #4361ee;  font-size: 18px;">Cancion</th>
+            <th scope="col" class="table-dark text-center" style="background-color: #4361ee;  font-size: 18px;">Cantante(s)</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+          {% for posiciones, nombre_canciones, cantantes in top %}
+          <tr>
+              <td class="text-center"  style="font-weight: bold;">{{ posiciones }}</td>
+              <td class="text-center">{{ nombre_canciones }}</td>
+              <td class="text-center">{{ cantantes }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

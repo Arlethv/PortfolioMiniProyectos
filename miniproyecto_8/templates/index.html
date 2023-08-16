@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link type="text/css" rel="stylesheet" href='{% static "css/style.css" %}'>
+    <title>Document</title>
+</head>
+<body>
+  
+    <form  id="menu" method="post" action="{% url 'menu' %}" >
+      {% csrf_token %}
+    <label for="opcion"><strong>Bienvenido a su menú USSD</strong></label>
+    <ol class="list-group">
+        <li class="list-group-item">Elija la opcion deseada:</li>
+        {% if respuesta %}
+        {{ respuesta|safe }}
+    {% else %}
+        <li class="list-group-item">1. Consultar Saldo</li>
+        <li class="list-group-item">2. Recargar en linea</li>
+        <li class="list-group-item">3. Mi numero</li>
+        <li class="list-group-item">4. Paquetes recomendados</li>
+        <li class="list-group-item">5. Atención al Cliente</li>
+        <li class="list-group-item">6. Salir</li>
+        {% endif %}
+    </ul><br>
+    
+    <input type="text" name="opcion" id="opcion">
+
+    <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-4 d-flex justify-content-center mb-4 ">
+            <div class="circle-container ">
+                <button type="button" class="circle-content" name="numero" value="1">1</button>
+              </div>
+          </div>
+          <div class="col-md-4 d-flex justify-content-center mb-4">
+            <div class="circle-container">
+                <button type="button" class="circle-content" name="numero" value="2">2</button>
+              </div>
+          </div>
+          <div class="col-md-4 d-flex justify-content-center mb-4">
+            <div class="circle-container">
+                <button type="button" class="circle-content" name="numero" value="3">3</button>
+              </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4 d-flex justify-content-center mb-4">
+                <div class="circle-container">
+                    <button type="button" class="circle-content" name="numero" value="4">4</button>
+                  </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center mb-4">
+                <div class="circle-container">
+                    <button type="button" class="circle-content" name="numero" value="5">5</button>
+                  </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center mb-4">
+                <div class="circle-container">
+                    <button type="button" class="circle-content" name="numero" value="6">6</button>
+                  </div>
+            </div>
+          </div>
+          <div class="row ">
+            <div class="col-md-4 d-flex justify-content-center mb-4">
+                <div class="circle-container">
+                    <button type="button" class="circle-content" name="numero" value="7">7</button>
+                  </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center mb-4">
+                <div class="circle-container">
+                    <button type="button" class="circle-content" name="numero" value="8">8</button>
+                  </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center mb-4">
+                <div class="circle-container">
+                    <button type="button" class="circle-content" name="numero" value="9">9</button>
+                  </div>
+            </div>
+             </div>
+             <div class="row ">
+                <div class="col-md-4 d-flex justify-content-center mb-4">
+                    <div class="circle-container">
+                        <button type="button" class="circle-content" name="numero" value="0">*</button>
+                      </div>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center mb-4">
+                    <div class="circle-container">
+                        <button type="button" class="circle-content" name="numero" value="0">0</button>
+                      </div>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center mb-4">
+                    <div class="circle-container">
+                        <button type="button" class="circle-content" name="numero" value="0">#</button>
+                      </div>
+                </div>
+                 </div>
+                 <div class="row ">
+                    <div class="col-md-12 d-flex justify-content-center mb-4">
+                        
+                            <button type="submit" class="btn-enviar" name="numero" > <i class="fas fa-phone"></i></button>
+                       
+                    </div>
+                   
+                     </div>
+      </div>
+</form>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const botones = document.querySelectorAll(".circle-content");
+      const input = document.querySelector("#opcion");
+  
+      botones.forEach(function(boton) {
+          boton.addEventListener("click", function() {
+              const valorBoton = boton.value;
+              input.value += valorBoton;
+          });
+      });
+  });
+  </script>
+  
+  
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
