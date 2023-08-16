@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratings de Películas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link type="text/css" rel="stylesheet" href='{% static "css/style.css" %}'>
+</head>
+<body>
+<header>
+  <nav class="navbar navbar-dark" style="background-color: #240046;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        Películas
+      </a>
+    </div>
+  </nav>
+</header>
+<div class="container ">
+  <div class="text-center">
+      <h1>Ratings de Películas</h1>
+      <p>Según la opinión de los usuarios </p>
+  </divr>
+</div>
+    <div class="container mt-4">
+
+    </div>
+    
+    <div class="container">
+      <div class="row">
+        {% for titulo, info_peliculas in peliculas_data.items %}
+  
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ info_peliculas.0.imagen }}" alt="Card image">
+            <div class="card-body">
+
+              <form method="post" action="{% url 'ratings_pelculas' %}" >
+                {% csrf_token %}
+                <h5 class="card-title">{{ titulo }}</h5>
+                {% if info_peliculas.0.puntaje|floatformat:"2" >= "70.00" or info_peliculas.0.puntaje|floatformat:"2" == "100.00" %}
+                <p class="card-text">Crítica: {{ info_peliculas.0.puntaje }}% <i class="fas fa-thumbs-up text-success"></i></p>
+                {% else %}
+                <p class="card-text">Crítica: {{ info_peliculas.0.puntaje }}% <i class="fas fa-thumbs-down text-danger"></i></p>
+                {% endif %}
+
+                  <!-- Mostrar puntuación del usuario si está disponible -->
+                  {% if info_peliculas.0.puntaje_usuario is not None %}
+                  {% if info_peliculas.0.puntaje_usuario|floatformat:"2" >= "70.00" or info_peliculas.0.puntaje_usuario|floatformat:"2" == "100.00" %}
+                  <p class="card-text">Tu puntuación: {{ info_peliculas.0.puntaje_usuario }}% <i class="fas fa-thumbs-up text-success"></i></p>
+                  {% else %}
+                  <p class="card-text">Tu puntuación: {{ info_peliculas.0.puntaje_usuario }}% <i class="fas fa-thumbs-down text-danger"></i></p>
+                  {% endif %}
+              {% else %}
+                  <p class="card-text">Aún no has puntuado esta película.</p>
+              {% endif %}
+
+               <input type="hidden" name="titulo" value="{{ titulo }}">
+                <input type="hidden" name="puntaje" value="{{ info_peliculas.0.puntaje }}">
+                <input type="hidden" name="imagen" value="{{ info_peliculas.0.imagen  }}">
+                <div class="rating-container">
+                <div class="rating">
+                  <input value="100" name="rating_{{ titulo }}" id="star5_{{ titulo }}" type="radio">
+                  <label for="star5_{{ titulo }}"></label>
+                  <input value="80" name="rating_{{ titulo }}" id="star4_{{ titulo }}" type="radio">
+                  <label for="star4_{{ titulo }}"></label>
+                  <input value="60" name="rating_{{ titulo }}" id="star3_{{ titulo }}" type="radio">
+                  <label for="star3_{{ titulo }}"></label>
+                  <input value="40" name="rating_{{ titulo }}" id="star2_{{ titulo }}" type="radio">
+                  <label for="star2_{{ titulo }}"></label>
+                  <input value="20" name="rating_{{ titulo }}" id="star1_{{ titulo }}" type="radio">
+                  <label for="star1_{{ titulo }}"></label>
+                  
+              </div><br>
+              <button type="submit" class="btn btn-primary" style="background-color: #7209b7; border: none;"> Puntuar</button>
+            </div>
+
+            </form>
+           
+            </div>
+          </div>
+        </div>
+       
+        {% endfor %}
+  
+      </div>
+    </div>
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
