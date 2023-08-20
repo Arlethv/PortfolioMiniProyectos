@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #6c757d;
+    margin: 0;
+    padding: 0;
+    background-color: #fff !important;
+ 
+}
+
+.container {
+    max-width: 600px;
+    margin: 60px auto;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 44px;
+    margin: 40px;
+    font-weight: bold;
+    background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
+    background-clip: padding-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+
+}
+
+.letra_abc {
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    margin: 3px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.letra_abc:hover {
+    background-color: #d0d0d0;
+    color: #fff;
+}
+
+input{
+    
+    max-width:300px; 
+    margin: 40px auto;
+}
