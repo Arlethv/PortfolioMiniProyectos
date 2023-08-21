@@ -1,5 +1,5 @@
 """
-URL configuration for miniproyecto_6 project.
+URL configuration for miniproyecto_10 project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,14 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import plantilla,convertirNumero
-from . import views
+from .views import juego_ahorcado
 
 urlpatterns = [
-    path('', views.plantilla),
     path('admin/', admin.site.urls),
-    path('numeroaPalabras/', views.numeroaPalabras, name='numeroaPalabras'),
-    path('convertirParteEntera/', views.convertirParteEntera, name='convertirParteEntera'),
-    path('convertirParteDecimal/', views.convertirParteDecimal, name='convertirParteDecimal'),
-    path('convertirNumero/', views.convertirNumero, name='convertirNumero')
+    path('index/', juego_ahorcado, name='juego_ahorcado')
 ]
