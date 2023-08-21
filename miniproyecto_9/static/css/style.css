@@ -56,7 +56,7 @@ h1 {
   }
   .card {
     width: 18rem;
-    margin: 10px; 
+
   }
   
   .btn{
@@ -91,6 +91,7 @@ h1 {
 .rating-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra horizontalmente los elementos */
+  align-items: center; 
   gap: 0px;
 }
+
