@@ -95,13 +95,7 @@ h1 {
 .rating-container {
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
   align-items: center; 
   gap: 0px;
 }
 
-=======
-  align-items: center; /* Centra horizontalmente los elementos */
-  gap: 0px;
-}
->>>>>>> c22b6f0025b2cd0140e33110c1f0a319f12b12ba
