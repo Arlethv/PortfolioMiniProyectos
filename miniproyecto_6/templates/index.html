@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conversión de números a palabras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href='{% static "css/style.css" %}'>
+</head>
+
+<body>
+    <div class="container my-6 ">
+        <h1 class="text-center">Conversión de Números a Palabras</h1>
+        <div class="conversion-inputs my-4">
+            <form method="post" action="{% url 'convertirNumero' %}" class="needs-validation" novalidate>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="numero">Ingresa un número:</label>
+                    <input type="number" step="any" class="form-control" name="numero" placeholder="Ingresa un número positivo" >
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-convertir">Convertir a Texto</button>
+                </div>
+            </form>
+        </div>
+        <div class="resultado text-center">
+            <p>Respuesta en palabras:</p>
+            <p id="respuesta" class="font-weight-bold">{{ respuesta }}</p>
+        </div>
+        <div class="text-center">
+            <img src="https://img.freepik.com/foto-gratis/alto-angulo-letras-alfabeto-podio-dia-educacion_23-2149241035.jpg?w=1060&t=st=1691111217~exp=1691111817~hmac=30cdfff0991bffbd3c9ff4fe329add26e6306220e0ec1a6e1a9bd168a236057b" alt="Imagen representativa" class="img-fluid mt-4" style="max-width: 400px;">
+        </div>
+    </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
